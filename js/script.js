@@ -8,16 +8,16 @@ const validator = {
 
         // variáveis
         let send = true;
-        const inputs = document.querySelectorAll("input");
+        const inputs = form.querySelectorAll("input");
 
         // limpando os erros existentes
         validator.clearErrors(inputs);
 
-        for(let input of inputs){
-            let check = validator.checkRules(input); 
+        for(let i = 0; i < inputs.length; i++){
+            let check = validator.checkRules(inputs[i]); 
             if(check !== true){
                 send = false;
-                validator.showErrors(input, check);
+                validator.showErrors(inputs[i], check);
             }
         }
 
@@ -61,14 +61,13 @@ const validator = {
     clearErrors: (inputs) => {
         let errorElements = document.querySelectorAll(".error");
         
-        for(let input of inputs){
-            input.style = "";
+        for(let i in inputs){
+            inputs[i].style = "";
         }
-        for(let errors of errorElements){
-            errors.remove();
+        for(let i = 0; i < errorElements.length; i++){
+            errorElements[i].remove();
         }
     }
 };
 
 form.addEventListener("submit", validator.handleFunction);
-
