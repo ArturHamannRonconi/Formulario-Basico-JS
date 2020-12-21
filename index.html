@@ -29,10 +29,18 @@
                 <div class="form">
                     <form method="POST" id="form">
                         <div class="inputs">
-                            <input data-rules="required=true|" type="text" name="nome" placeholder="First Name">
-                            <input data-rules="" type="text" name="sobrenome" placeholder="Last Name">
-                            <input data-rules="" type="email" name="email" placeholder="Email Address">
-                            <input data-rules="required=true|" type="password" name="senha" placeholder="Password">
+                            <div class="localError">
+                                <input data-rules="required=true|" type="text" name="nome" placeholder="First Name">
+                            </div>
+                            <div class="localError">
+                                <input type="text" name="sobrenome" placeholder="Last Name">
+                            </div>
+                            <div class="localError">
+                                <input type="email" name="email" placeholder="Email Address">
+                            </div>
+                            <div class="localError">
+                                <input data-rules="required=true|" type="password" name="senha" placeholder="Password">
+                            </div>
                             <input type="submit" value="Sign Up">
                         </div>
                     </form>

@@ -29,7 +29,6 @@ const validator = {
 
     // função para checar as regras de cada input
     checkRules: (input) => {
-        
         let rawRules = input.getAttribute("data-rules");
 
         if(rawRules !== null){
@@ -38,32 +37,22 @@ const validator = {
                 return {rule, value};
             };            
             let rules = rawRules.split("|").map(toRules);
-            const returnToMainFunction = validator.checkReturn(rules);
-
-            return returnToMainFunction;
-        };
-    },
-
-    // função para retornar ao check
-    checkReturn: (rules) => {
-        const inputs = form.querySelectorAll("input");
-        for(let input of inputs){
-            switch (rules.rule){
-                case 'required':
-                    if(input.value == ''){
-                        return "o campo não pode ser vazio"
-                    }
-                break;
-                case 'min':
-                    if(input.value.length < rules.value[1]){
-                        return `o campo precisa de pelo menos ${rules.value[1]} caracteres`;
-                    }   
-                break;
-                default:
-                    return true;
-                break;
+            for(let i in rules){
+                switch (rules[i].rule){
+                    case 'required':
+                        if(input.value == ''){
+                            return "o campo não pode ser vazio"
+                        }
+                    break;
+                    case 'min':
+                        if(input.value.length < rules[1].value){
+                            return `o campo precisa de pelo menos ${rules[1].value} caracteres`;
+                        }   
+                    break;
+                }
             }
         }
+        return true
     },
 
     // função para mostrar os erros
@@ -71,7 +60,7 @@ const validator = {
         const errorElement = document.createElement("div");
         errorElement.classList.add("error");
         errorElement.innerHTML = error;
-        input.style.borderColor = "#F00";
+        input.style.borderColor = "#EC2300";
 
         input.parentElement.insertBefore(errorElement, input);
     },
