@@ -60,7 +60,7 @@
     display:flex;
     flex-direction:column;
 }
-.input{
+input:not([type="submit"]){
     height:57px;
     outline:0;
     font-size:14px;
@@ -77,10 +77,15 @@ input[type="submit"]{
     outline:0;
     border:0;
     background-color:#4ff54f;
+    cursor:pointer;
 }
 #footer{
     display:flex;
     justify-content:center;
     height:5vh;
     background-color:var(--cinza-claro-secundario);
+}
+
+.error{
+    
 }

@@ -27,12 +27,12 @@
         <section id="section">
             <div class="container">
                 <div class="form">
-                    <form method="POST" autocomplete="off">
+                    <form method="POST" id="form">
                         <div class="inputs">
-                            <input class="input" type="text" name="nome" placeholder="First Name">
-                            <input class="input" type="text" name="sobrenome" placeholder="Last Name">
-                            <input class="input" type="email" name="email" placeholder="Email Address">
-                            <input class="input" type="password" name="senha" placeholder="Password">
+                            <input data-rules="required=true|" type="text" name="nome" placeholder="First Name">
+                            <input data-rules="" type="text" name="sobrenome" placeholder="Last Name">
+                            <input data-rules="" type="email" name="email" placeholder="Email Address">
+                            <input data-rules="required=true|" type="password" name="senha" placeholder="Password">
                             <input type="submit" value="Sign Up">
                         </div>
                     </form>
