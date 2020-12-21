@@ -13,11 +13,11 @@ const validator = {
         // limpando os erros existentes
         validator.clearErrors(inputs);
 
-        for(let i = 0; i < inputs.length; i++){
-            let check = validator.checkRules(inputs[i]); 
+        for(let input of inputs){
+            let check = validator.checkRules(input); 
             if(check !== true){
                 send = false;
-                validator.showErrors(inputs[i], check);
+                validator.showErrors(input, check);
             }
         }
 
@@ -29,22 +29,41 @@ const validator = {
 
     // função para checar as regras de cada input
     checkRules: (input) => {
-        const toRules = (r) => {
-            const [rule, value] = r.split("=");
-            return {rule, value};
-        };
-
+        
         let rawRules = input.getAttribute("data-rules");
-        let rules = rawRules.split("|").map(toRules);
 
-        switch (rules.rule) {
-            case "required":
-                return `É necessário preencher este campo!`;    
-            break;
-            default:
-                return true;
-            break;
+        if(rawRules !== null){
+            const toRules = (r) => {
+                const [rule, value] = r.split("=");
+                return {rule, value};
+            };            
+            let rules = rawRules.split("|").map(toRules);
+            const returnToMainFunction = validator.checkReturn(rules);
+
+            return returnToMainFunction;
         };
+    },
+
+    // função para retornar ao check
+    checkReturn: (rules) => {
+        const inputs = form.querySelectorAll("input");
+        for(let input of inputs){
+            switch (rules.rule){
+                case 'required':
+                    if(input.value == ''){
+                        return "o campo não pode ser vazio"
+                    }
+                break;
+                case 'min':
+                    if(input.value.length < rules.value[1]){
+                        return `o campo precisa de pelo menos ${rules.value[1]} caracteres`;
+                    }   
+                break;
+                default:
+                    return true;
+                break;
+            }
+        }
     },
 
     // função para mostrar os erros
@@ -61,11 +80,11 @@ const validator = {
     clearErrors: (inputs) => {
         let errorElements = document.querySelectorAll(".error");
         
-        for(let i in inputs){
-            inputs[i].style = "";
+        for(let input of inputs){
+            input.style = "";
         }
-        for(let i = 0; i < errorElements.length; i++){
-            errorElements[i].remove();
+        for(let error of errorElements){
+            error.remove();
         }
     }
 };
