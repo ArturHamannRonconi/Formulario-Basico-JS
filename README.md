@@ -1,0 +1,6 @@
+Bom esse é o primeiro README.md que escrevo, portanto não sei muito bem o que colocar aqui, peço desculpas desde já.
+Não acho que tenha muito o que explicar sobre esse formulário mas vamos lá, é um modelo de formulário simples que faz uma verificação pelo javascript, essa verificação é feita usando um atributo de dado que é colocado em cada input no html ("data-rules"), cada regra dentro do data-rules é separada por um "|" e cada regra precisa também de um valor, que é separado da regra pelo sinal de "=", seria mais ou menos isso daqui, data-rules = " required=true|min=2 ", nesse data-rules que fiz basicamente diz que é necessário que o campo seja preenchido e também que o mínimo de caracteres necessário para este campo é 2.
+
+OK, entendido isso explicarei agora a parte de javascript, é dada uma função ao submit do formulário, essa função esta em um objeto com 4 funções, uma função para mostrar os erros (exemplo:"é necessário preencher este campo"), outra para limpar esses erros da tela, uma para checar se as regras estão de acordo, e a última função que vai ser a função aderida pelo submit, ela juntas as outras 3 dentro de si e faz com que tudo funcione.
+
+acredito que seja isso, Obrigado pela anteção! 🤘
