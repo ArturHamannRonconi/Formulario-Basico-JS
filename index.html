@@ -10,9 +10,7 @@
         <header id="header">
             <div class="container">
                 <div class="topSide">
-                    <div class="logo">
-                        <img src="img/adobe.png" alt="logo">
-                    </div>
+                    <div class="logo"></div>
                     <div class="menu">
                         <ul>
                             <li><a href="">HOME</a></li>
@@ -27,12 +25,20 @@
         <section id="section">
             <div class="container">
                 <div class="form">
-                    <form method="POST" autocomplete="off">
+                    <form method="POST" id="form">
                         <div class="inputs">
-                            <input class="input" type="text" name="nome" placeholder="First Name">
-                            <input class="input" type="text" name="sobrenome" placeholder="Last Name">
-                            <input class="input" type="email" name="email" placeholder="Email Address">
-                            <input class="input" type="password" name="senha" placeholder="Password">
+                            <div class="localError">
+                                <input data-rules="required=true|" type="text" name="nome" placeholder="First Name">
+                            </div>
+                            <div class="localError">
+                                <input type="text" name="sobrenome" placeholder="Last Name">
+                            </div>
+                            <div class="localError">
+                                <input type="email" name="email" placeholder="Email Address">
+                            </div>
+                            <div class="localError">
+                                <input data-rules="required=true|" type="password" name="senha" placeholder="Password">
+                            </div>
                             <input type="submit" value="Sign Up">
                         </div>
                     </form>
